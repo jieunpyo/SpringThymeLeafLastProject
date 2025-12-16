@@ -18,4 +18,12 @@ public interface FoodMapper {
    
    @Select("SELECT CEIL(COUNT(*)/12.0) FROM menupan_food")
    public int foodTotalPage();
+   
+   // Footer에 출력
+   @Select("SELECT fno,name,rownum "
+		  +"FROM (SELECT fno,name "
+		  +"FROM menupan_food "
+		  +"ORDER BY hit DESC) "
+		  +"WHERE rownum<=10")
+   public List<FoodVO> foodTop10Data();
 }

@@ -1,13 +1,9 @@
 @charset "UTF-8";
 .row {
   margin: 0px auto;
-  width: 960px;
+  /*width: 960px;*/
 }
-p{
-   overflow: hidden;
-   white-space: nowrap;
-   text-overflow: ellipsis;
-}
+
 /* 썸네일 카드 스타일 */
 .thumbnail {
    
@@ -47,6 +43,9 @@ p{
     font-weight: bold;
     color: #333;
     font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 /* 링크 효과 제거 */
@@ -55,29 +54,29 @@ p{
     color: inherit;
 }
 
-/* 페이지네이션 */
+/* 페이지네이션 
 .pagination {
     margin: 0;
 }
+*/
 
 .pagination > li > a {
-    color: #555;
-    border-radius: 50%;
-    margin: 0 3px;
-    border: 1px solid #ddd;
-    transition: all 0.2s;
+    color: #555 !important;
+    border-radius: 50% !important;
+    margin: 0 3px !important;
+    border: 1px solid #ddd !important;
+    transition: all 0.2s !important;
 }
 
 .pagination > li > a:hover {
-    background-color: #337ab7;
-    color: #fff;
-    border-color: #337ab7;
+    background-color: #337ab7 !important;
+    color: #fff !important;
+    border-color: #337ab7 !important;
 }
 
-/* 현재 페이지 */
 .pagination > .active > a,
 .pagination > .active > a:hover {
-    background-color: #337ab7;
-    border-color: #337ab7;
-    color: #fff;
+    background-color: #337ab7 !important;
+    border-color: #337ab7 !important;
+    color: #fff !important;
 }
