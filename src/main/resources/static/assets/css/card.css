@@ -1,0 +1,83 @@
+@charset "UTF-8";
+.row {
+  margin: 0px auto;
+  width: 960px;
+}
+p{
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+}
+/* 썸네일 카드 스타일 */
+.thumbnail {
+   
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    padding-top: 8px;
+}
+
+.thumbnail:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* 이미지 */
+.thumbnail img {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    display: block;
+    margin: 5px auto 0;
+}
+
+/* 캡션 */
+.thumbnail .caption {
+    padding: 10px;
+    text-align: center;
+    background-color: #fafafa;
+}
+
+.thumbnail .caption p {
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+/* 링크 효과 제거 */
+.thumbnail a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 페이지네이션 */
+.pagination {
+    margin: 0;
+}
+
+.pagination > li > a {
+    color: #555;
+    border-radius: 50%;
+    margin: 0 3px;
+    border: 1px solid #ddd;
+    transition: all 0.2s;
+}
+
+.pagination > li > a:hover {
+    background-color: #337ab7;
+    color: #fff;
+    border-color: #337ab7;
+}
+
+/* 현재 페이지 */
+.pagination > .active > a,
+.pagination > .active > a:hover {
+    background-color: #337ab7;
+    border-color: #337ab7;
+    color: #fff;
+}
