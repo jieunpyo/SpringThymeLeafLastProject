@@ -1,0 +1,28 @@
+#port = 8080 = aws : 8080허용 / 1521 / 3306
+#JSP / Security / Batch
+server:
+  port: 80
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@211.238.142.22:1521:xe
+    username: hr
+    password: happy
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+  jpa:
+    database: oracle
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
+        storage_engine: innodb
+        show_sql: true
+        format_sql: true
+        user_sql_comments: true
+  thymeleaf:
+    cache: false
+    encoding: utf-8
+    prefix: classpath:templates/
+    suffix: .html
+    mode: HTML 
+mybatis:
+  type-aliases-package: com.sist.web.vo
+  mapper-locations: mybatis/mapper/*.xml
