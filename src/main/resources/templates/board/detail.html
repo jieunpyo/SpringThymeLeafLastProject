@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="main-wrapper">
+	<h3 class="text-center" style="margin-bottom: 80px">내용보기</h3>
+	  <div class="container">
+	  <div class="row aln-center">
+	  <table class="table">
+	    <tbody>
+	      <tr>
+			<th class="success text-center" width=20%>번호</th>
+			<td class="aln-center" width=30%>[[${vo.no}]]</td>
+			<th class="success text-center" width=20%>작성일</th>
+			<td class="aln-center" width=30%>[[${vo.regdate}]]</td>
+		</tr>
+		<tr>
+		  <th class="success text-center" width=20%>이름</th>
+		  <td class="aln-center" width=30%>[[${vo.name}]]</td>
+		  <th class="success text-center" width=20%>조회수</th>
+		  <td class="aln-center" width=30%>[[${vo.hit}]]</td>
+		</tr>
+		<tr>
+		  <th class="success text-center" width=20%>제목</th>
+		  <td class="aln-left" colspan="3">[[${vo.subject}]]</td>
+		</tr>
+		<tr>
+	  	  <td class="text-left" valign="top" height="200" colspan="4">
+	   <pre style="white-space: per-wrap;background-color: white;border: none">[[${vo.content}]]</pre>
+	  </td>
+	</tr>
+	<tr>
+	  <td colspan="4" class="text-right">
+	   <a th:href="@{/board/update(no=${vo.no})}" class="btn btn-xs btn-warning">수정</a>
+	   <a th:href="@{/board/delete(no=${vo.no})}" class="btn btn-xs btn-info">삭제</a>
+	   <a href="/board/list" class="btn btn-xs btn-success">목록</a>
+	  </td>
+	</tr>
+	  </tbody>
+	 </table>
+	</div>
+  </div>
+</div>
+</body>
+</html>

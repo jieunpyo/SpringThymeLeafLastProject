@@ -1,5 +1,5 @@
 #port = 8080 = aws : 8080허용 / 1521 / 3306
-#JSP / Security / Batch
+# JSP / Security / Batch
 server:
   port: 80
 spring:
@@ -13,8 +13,6 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.OracleDialect
-        storage_engine: innodb
-        show_sql: true
         format_sql: true
         user_sql_comments: true
   thymeleaf:
@@ -22,7 +20,12 @@ spring:
     encoding: utf-8
     prefix: classpath:templates/
     suffix: .html
-    mode: HTML 
+    mode: HTML
 mybatis:
-  type-aliases-package: com.sist.web.vo
-  mapper-locations: mybatis/mapper/*.xml
+    type-aliases-package: com.sist.web.vo
+    mapper-locations: mybatis/mapper/*.xml
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
