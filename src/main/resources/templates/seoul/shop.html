@@ -13,7 +13,8 @@
 			    <div class="thumbnail">
 			      <a th:href="@{/seoul/detail(no=${vo.no},type=3)}">
 			        <img th:src="${vo.poster}"
-			         style="width:240px;height: 130px">
+			         style="width:240px;height: 130px"
+			         onerror="this.src='/images/noimage.png'">>
 			        <div class="caption">
 			          <p>[[${vo.title}]]</p>
 			        </div>

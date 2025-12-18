@@ -10,11 +10,11 @@ import com.sist.web.mapper.*;
 @Service
 @RequiredArgsConstructor
 /*
- * 	 @Autowired
- * 	 public SeoulServiceImpl(SeoulMapper mapper)
- * 	 {
- * 		this.mapper=mapper;
- * 	 }
+ *    @Autowired
+ *    public SeoulServiceImpl(SeoulMapper mapper)
+ *    {
+ *       this.mapper=mapper;
+ *    }
  */
 public class SeoulServiceImpl implements SeoulService{
    private final SeoulMapper mapper;
@@ -42,5 +42,11 @@ public class SeoulServiceImpl implements SeoulService{
 	// TODO Auto-generated method stub
 	   mapper.seoulHitIncrement(map);
 	   return mapper.seoulDetailData(map);
+   }
+
+   @Override
+   public List<FoodVO> seoulNearFoodHouse(String address) {
+	// TODO Auto-generated method stub
+	return mapper.seoulNearFoodHouse(address);
    }
 }

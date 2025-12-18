@@ -3,7 +3,7 @@ package com.sist.web.vo;
 import lombok.Data;
 
 /*
- * 	FNO           NUMBER(38)     
+ *  FNO           NUMBER(38)     
 	NAME          VARCHAR2(4000) 
 	TYPE          VARCHAR2(4000) 
 	PHONE         VARCHAR2(26)   
@@ -19,13 +19,13 @@ import lombok.Data;
 	HIT           NUMBER(38)     
 	JJIMCOUNT     NUMBER(38)     
 	LIKECOUNT     NUMBER(38)     
-	REPLYCOUNT    NUMBER(38) 
-	
+	REPLYCOUNT    NUMBER(38)     
+
  */
 @Data
 public class FoodVO {
-  private int fno,git,jjimcount,likecount,replycount,hit;
+  private int fno,hit,jjimcount,likecount,replycount;
   private String name,address,phone,theme,type,price,time,
-  		  parking,poster,images,content;
+          parking,poster,images,content;
   private double score;
 }

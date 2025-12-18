@@ -1,7 +1,5 @@
 package com.sist.web.mapper;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -20,7 +18,7 @@ public interface FoodMapper {
    @Select("SELECT CEIL(COUNT(*)/12.0) FROM menupan_food")
    public int foodTotalPage();
    
-   // Footer에 출력
+   // Footer에 출력 
    @Select("SELECT fno,name,rownum "
 		  +"FROM (SELECT fno,name "
 		  +"FROM menupan_food "
@@ -35,6 +33,6 @@ public interface FoodMapper {
    public void foodHitIncrement(int fno);
    // 상세보기 데이터 읽기 
    @Select("SELECT * FROM menupan_food "
-		   +"WHERE fno=#{fno}")
+		  +"WHERE fno=#{fno}")
    public FoodVO foodDetailData(int fno);
 }

@@ -9,21 +9,20 @@
   <div id="main-wrapper">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3" th:each="vo:${list}">
+			<div class="col-sm-3" th:each="vo:${list}">
 			    <div class="thumbnail">
 			      <a th:href="@{/food/detail(fno=${vo.fno})}">
-			        <img th:src="${vo.poster}"
+			        <img th:src="${vo.poster}" 
 			         style="width:240px;height: 130px">
 			        <div class="caption">
 			          <p>[[${vo.name}]]</p>
 			        </div>
 			      </a>
-			</div>
+			 </div>				
 		</div>
-	</div>
-	
-		<div class="row aln-center" style="margin-top:10px;">
-		  <ul class="pagination">
+		
+		<div class="row" style="margin-top: 10px">
+		  <ul class="pagination text-center">
 		    <li th:if="${startPage>1}">
 		      <a th:href="@{/food/list(page=${startPage-1})}">&laquo;</a></li>
 		    <li th:each="i:${#numbers.sequence(startPage,endPage)}"
@@ -32,7 +31,7 @@
 		    <li th:if="${endPage<totalpage}">
 		      <a th:href="@{/food/list(page=${endPage+1})}">&raquo;</a></li>
 		  </ul>
-		  </div>
+		</div>
 	</div>
   </div>
 </body>

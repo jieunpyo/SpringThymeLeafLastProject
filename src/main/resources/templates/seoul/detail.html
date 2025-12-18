@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/assets/css/card.css}">
 </head>
 <body>
 <div id="main-wrapper">
@@ -11,7 +12,9 @@
 		<table class="table">
 		  <tr>
 		   <td class="text-center">
-		    <img th:src="${vo.poster}" style="width: 800px;height: 350px">
+		    <img th:src="${vo.poster}" style="width: 800px;height: 350px"
+		    onerror="this.src='/images/noimage.png'">
+		    >
 		   </td>
 		  </tr>
 		  <tr>
@@ -22,6 +25,13 @@
 		  </tr>
 		  <tr>
 		    <td>주소:[[${vo.address}]]</td>
+		  </tr>
+		  <tr>
+		    <td class="text-right">
+		      <button  type=button class="btn-xs btn-danger"
+		       onclick="javascript:history.back()"
+		      >목록</button>
+		    </td>
 		  </tr>
 		  <tr>
 		    <td>
@@ -68,6 +78,20 @@
 	    } 
 	});    
 	</script>
+		</div>
+		<div class="row">
+			<div class="col-md-2" th:each="fvo:${list}">
+			    <div class="thumbnail">
+			      <a href="@{/food/detail(no=${fvo.fno})}">
+			        <img th:src="${fvo.poster}"
+			         style="width:240px;height: 130px"
+			         
+			         >
+			        <div class="caption">
+			          <p>[[${fvo.name}]]</p>
+			        </div>
+			      </a>
+			    </div>
 		</div>
 	</div>
   </div>

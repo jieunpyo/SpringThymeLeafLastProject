@@ -3,7 +3,7 @@ package com.sist.web.vo;
 import lombok.Data;
 
 /*
- * 	NO      NOT NULL NUMBER         
+ *  NO      NOT NULL NUMBER         
 TITLE   NOT NULL VARCHAR2(200)  
 POSTER  NOT NULL VARCHAR2(500)  
 MSG     NOT NULL VARCHAR2(4000) 

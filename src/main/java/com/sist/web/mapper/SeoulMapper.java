@@ -85,29 +85,36 @@ public interface SeoulMapper {
 		  +"FROM ${table_name} "
 		  +"ORDER BY no ASC "
 		  +"OFFSET #{start} ROWS FETCH NEXT 12 ROWS ONLY")
-   		  // MySQL => LIMIT #{start},12 => MongoDB
+          // MySQL => LIMIT #{start},12 => MongoDB
    public List<SeoulVO> seoulListData(Map map);
    
    @Select("SELECT CEIL(COUNT(*)/12.0) FROM ${table_name}")
    public int seoulTotalPage(Map map);
    /*
-    * 	2025 => Spring-Boot : JSP / ThymeLeaf => SpringFrameWork
-    * 	2026 => Spring-Security : JWT(Cookie) / 일반(Session)
-    * 							  | => SNS로그인
-    * 			Spring-Batch : 스켈쥴러
-    * 			Spring-Data / Spring-AI / Spring-I / Spring-Kafka
-    * 			------------- ----------			 -------------
-    * 			MSA 
-    * 			=> PROCEDURE / FUNCTION / GROUPING 
-    * 	=> PINIA / React-Query
-    * 		|		   |
-    * 		------------ 승부처
+    *   2025 => Spring-Boot : JSP / ThymeLeaf => SpringFrameWork
+    *           WEB 
+    *   2026 => Spring-Security : JWT(Cookie) / 일반(Session)
+    *                             | => SNS로그인 
+    *           Spring-Batch : 스켈쥴러 
+    *           Spring-Data / Spring-AI / Spring-I / Spring-Kafka
+    *           ------------- ----------             -------------
+    *           MSA  
+    *           => PROCEDURE / FUNCTION / GROUPING 
+    *   => PINIA / React-Query 
+    *       |          |
+    *       ------------ 승부처
     */
    @Update("UPDATE ${table_name} SET "
 		  +"hit=hit+1 "
-		  +"WHERE no=${no}")
+		  +"WHERE no=#{no}")
    public void seoulHitIncrement(Map map);
    @Select("SELECT * FROM ${table_name} "
 		  +"WHERE no=#{no}")
    public SeoulVO seoulDetailData(Map map);
+   
+   @Select("SELECT fno,name,poster,address,rownum "
+		  +"FROM menupan_food "
+		  +"WHERE REGEXP_LIKE(address,#{address}) "
+		  +"AND rownum<=6")
+   public List<FoodVO> seoulNearFoodHouse(String address);
 }

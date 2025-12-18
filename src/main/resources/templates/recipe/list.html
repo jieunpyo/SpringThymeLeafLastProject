@@ -9,21 +9,21 @@
   <div id="main-wrapper">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3" th:each="vo:${list}">
+			<div class="col-sm-3" th:each="vo:${list}">
 			    <div class="thumbnail">
-			      <a href="@{/recipe/detail(no=${vo.no})}">
-			        <img th:src="${vo.poster}"
+			      <a th:href="@{/recipe/detail(no=${vo.no})}">
+			        <img th:src="${vo.poster}" 
 			         style="width:240px;height: 130px"
 			         th:title="${vo.title}"
 			         >
 			        <div class="caption">
-			          <p>[[${vo.chef}]]</p>
+			          <p><a href="@{/recipe/chef_list(chef=${vo.chef})}">[[${vo.chef}]]</a></p>
 			        </div>
 			      </a>
-			    </div>
+			 </div>				
 		</div>
-		
-		<div class="row aln-center" style="margin-top: 10px;">
+	
+		<div class="row aln-center" style="margin-top:10px">
 		  <ul class="pagination">
 		    <li th:if="${startPage>1}">
 		      <a th:href="@{/recipe/list(page=${startPage-1})}">&laquo;</a></li>
@@ -34,6 +34,7 @@
 		      <a th:href="@{/recipe/list(page=${endPage+1})}">&raquo;</a></li>
 		  </ul>
 		</div>
+	</div>
   </div>
 </body>
 </html>
