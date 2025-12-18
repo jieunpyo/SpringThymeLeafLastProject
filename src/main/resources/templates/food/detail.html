@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <div id="main-wrapper">
+	<div class="container">
+		<div class="row aln-center">
+		<table class="table">
+		  <tr>
+		    <td class="text-center" rowspan="9" width=30%>
+		     <img th:src="${vo.poster}" style="width:300px;height: 250px">
+		    </td>
+		    <td colspan="2">
+		     <h3>[[${vo.name}]]&nbsp;<span style="color: orange;">[[${vo.score}]]</span></h3>
+		    </td> 
+		  </tr>
+		  <tr>
+		    <th width=10%>주소</th>
+		    <td width="60%" class="aln-left">[[${vo.address}]]</td>
+		  </tr>
+		  
+		  <tr>
+		    <th width=10%>전화</th>
+		    <td width="60%" class="aln-left">[[${vo.phone}]]</td>
+		  </tr>
+		  
+		  <tr>
+		    <th width=10%>음식종류</th>
+		    <td width="60%" class="aln-left">[[${vo.type}]]</td>
+		  </tr>
+		  
+		  <tr>
+		    <th width=10%>가격대</th>
+		    <td width="60%" class="aln-left">[[${vo.price}]]</td>
+		  </tr>
+		  
+		  <tr>
+		    <th width=10%>주차</th>
+		    <td width="60%" class="aln-left">[[${vo.parking}]]</td>
+		  </tr>
+		  
+		  <tr>
+		    <th width=10%>영업시간</th>
+		    <td width="60%" class="aln-left">[[${vo.time}]]</td>
+		  </tr>
+		  
+		  <tr>
+		    <th width=10%>테마</th>
+		    <td width="60%" class="aln-left">[[${vo.theme}]]</td>
+		  </tr>
+		  <tr>
+		   <th width=10%>좋아요</th>
+		   <td width="60%" class="aln-left">
+		    
+		   <img src="/images/likeon.png" style="width: 20px;height: 20px;display: inline-block;">
+		   ([[${vo.hit}]])
+		   </td>
+		  </tr>
+		</table>
+		<table class="table">
+		  <tr>
+		   <td>
+		   [[${vo.content}]]
+		   </td>
+		  </tr>
+		  <tr>
+		   <td class="text-right">
+		    <a href="#" class="btn btn-xs btn-primary">찜하기</a>
+		    <a href="#" class="btn btn-xs btn-info">예약하기</a>
+		    <a href="/food/list" class="btn btn-xs btn-warning">목록</a>
+		   </td>
+		  </tr>
+		</table>
+		</div>
+	<!-- 댓글 -->
+	<div class="row aln-text" style="margin-top: 20px">
+	  
+	  <table class="table" th:if="${session.id!=null}">
+	   <tr>
+	    <td>
+	     <textarea rows="4" cols="70" style="float: left"></textarea>
+	     <button type=button class="btn-primary"
+	      style="width: 100px;height: 94px;float: left"
+	     >댓글쓰기</button>
+	    </td>
+	   </tr>
+	  </table>
+	</div>
+   </div>
+   </div>
+   <script>
+    const commentApp=Vue.createApp({
+    	// Model = 데이터 관리 => 변수가 변경이 되면 => HTML에 적용 
+    	// 상태(변수) 관리 프로그램
+    	data(){
+    		return {
+    			// 멤버변수 
+    		}
+    	},
+    	/////// VM => 변수를 변경하는 곳 
+    	/*
+    	   callback : Vue의 생명
+    	   = created() : 설정 => Vue객체 생성완료
+    	   ***= mounted() : 브라우저에서 HTML을 번역후 출력 완료 
+    	   = updated() : 멤버변수가 변경된 경우 
+    	   = unmounted() : 화면 변경 => Vue객체가 소멸 
+    	   
+    	   사용자 요청 === VM 작업 === 결과값 : Model === View(HTML)
+    	   
+    	   가상돔 => 일부만 관리 
+    	   ----- 임시메모리에 저장 ===== 실제 돔 (브라우저에서 읽어서 출력) 
+    	   			 |				   |
+    	   			저장  ---------------
+    	   					 비교해서 다른 부분만 변경 => diff 
+    	   	=> 시리얼라이즈 : Buffered
+    	   	   --------------------
+    	   	=> 게임 (더블 버퍼링)
+    	*/
+    	mounted(){
+    		// 자동 호출 : window.onload => 연동 / 서버 연결 
+    		// jquery / react 
+    		/*
+    		   $(function(){
+    			   $('#a').click(function(){})
+    		   })
+    		   
+    		   =>
+    		   useEffect(()=>{
+    			  axios.get() 
+    		   },[curpage])
+    		   query([curpage],function(){})
+    		*/
+    		$('#a').click(function(){})
+    	},
+    	methods:{
+    		// 사용자 정의 기능 => 요청처리
+    	},
+    	computed:{
+    		// 시간 , 가격 , 총금액 => Format
+    	},
+    	components:{
+    		// 여러개의 기능을 처리 => include 
+    	}
+    	// HTML출력하는 영역 => <template> => View => MVVM 
+    })
+    commentApp.config.compilerOptions.delimiters=['((','))']
+    commentApp.mount("#header-wrapper")
+   </script>
+</body>
+</html>

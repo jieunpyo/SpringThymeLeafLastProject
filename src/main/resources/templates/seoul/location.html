@@ -11,29 +11,27 @@
 		<div class="row">
 			<div class="col-md-3" th:each="vo:${list}">
 			    <div class="thumbnail">
-			      <a th:href="@{/food/detail(fno=${vo.fno})}">
+			      <a th:href="@{/seoul/detail(no=${vo.no},type=1)}">
 			        <img th:src="${vo.poster}"
 			         style="width:240px;height: 130px">
 			        <div class="caption">
-			          <p>[[${vo.name}]]</p>
+			          <p>[[${vo.title}]]</p>
 			        </div>
 			      </a>
-			</div>
+			    </div>
 		</div>
-	</div>
-	
-		<div class="row aln-center" style="margin-top:10px;">
+		
+		<div class="row aln-center" style="margin-top: 10px;">
 		  <ul class="pagination">
 		    <li th:if="${startPage>1}">
-		      <a th:href="@{/food/list(page=${startPage-1})}">&laquo;</a></li>
+		      <a th:href="@{/seoul/location(page=${startPage-1})}">&laquo;</a></li>
 		    <li th:each="i:${#numbers.sequence(startPage,endPage)}"
 		     th:class="${curpage==i?'active':''}"
-		    ><a th:href="@{/food/list(page=${i})}">[[${i}]]</a></li>
+		    ><a th:href="@{/seoul/location(page=${i})}">[[${i}]]</a></li>
 		    <li th:if="${endPage<totalpage}">
-		      <a th:href="@{/food/list(page=${endPage+1})}">&raquo;</a></li>
+		      <a th:href="@{/seoul/location(page=${endPage+1})}">&raquo;</a></li>
 		  </ul>
-		  </div>
-	</div>
+		</div>
   </div>
 </body>
 </html>

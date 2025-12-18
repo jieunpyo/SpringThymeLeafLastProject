@@ -24,7 +24,7 @@ import lombok.Data;
  */
 @Data
 public class FoodVO {
-  private int fno,git,jjimcount,likecount,replycount;
+  private int fno,git,jjimcount,likecount,replycount,hit;
   private String name,address,phone,theme,type,price,time,
   		  parking,poster,images,content;
   private double score;
