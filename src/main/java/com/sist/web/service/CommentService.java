@@ -10,4 +10,5 @@ public interface CommentService {
 	public List<CommentVO> commentListData(int cno,int type);
 	public void commentInsert(CommentVO vo);
 	public void commentDelete(int no);
+	public void commentUpdate(int no, String msg);
 }

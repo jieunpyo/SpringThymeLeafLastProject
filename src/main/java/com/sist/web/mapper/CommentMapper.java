@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import com.sist.web.vo.*;
@@ -29,6 +30,11 @@ public interface CommentMapper {
 		 +"#{no},#{cno},#{type},#{id},#{name},#{msg},SYSDATE)")
   public void commentInsert(CommentVO vo);
   // 수정 
+  @Update("UPDATE comment_1 SET "
+		 +"msg=#{msg} "
+		 +"WHERE no=#{no}")
+  public void commentUpdate(@Param("no") Integer no,
+		  @Param("msg") String msg);
   // 삭제 
   @Delete("DELETE FROM comment_1 "
 		 +"WHERE no=#{no}")

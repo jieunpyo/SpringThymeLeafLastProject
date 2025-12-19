@@ -82,4 +82,23 @@ public class CommentRestController {
 	   return new ResponseEntity<>(map,HttpStatus.OK);
    }
    
+   @GetMapping("/comment/update_vue/")
+   public ResponseEntity<Map> comment_update(
+		   @RequestParam("cno") int cno,
+		   @RequestParam("type") int type,
+		   @RequestParam("no") int no,
+		   @RequestParam("msg") String msg
+		   )
+   {
+	   Map map=new HashMap();
+	   try
+	   {
+		   cService.commentUpdate(no,msg);
+		   map=commonseData(cno, type);
+	   }catch(Exception ex)
+	   {
+		   return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+	   }
+	   return new ResponseEntity<>(map,HttpStatus.OK);
+   }
 }

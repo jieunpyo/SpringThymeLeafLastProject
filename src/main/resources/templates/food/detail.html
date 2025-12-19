@@ -244,6 +244,31 @@
     				$('#up'+no).hide()
     				$('#u'+no).text("수정")
     			}
+    		},
+    		replyUpdate(no){
+    			let msg=$('#umsg'+no).val()
+    			if(msg==="")
+    			{
+    				$('#umsg'+no).focus()
+    				return 
+    			}
+    			
+    			axios.get('http://localhost/comment/update_vue/',{
+    				params:{
+    					no:no,
+    					cno:this.cno,
+    					type:this.type,
+    					msg:msg
+    				}
+    			}).then(response=>{
+        			console.log(response.data)
+        			this.list=response.data.list
+        			this.cno=response.data.cno
+        			this.type=response.data.type
+        			
+        			$('#up'+no).hide()
+        			$('#u'+no).text("수정")
+    			})
     		}
     		
     	},

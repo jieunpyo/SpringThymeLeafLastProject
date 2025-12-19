@@ -32,5 +32,11 @@ public class CommentServiceImpl implements CommentService{
 	// TODO Auto-generated method stub
 	 mapper.commentDelete(no);
    }
+
+   @Override
+   public void commentUpdate(int no, String msg) {
+	// TODO Auto-generated method stub
+	mapper.commentUpdate(no, msg);
+   }
    // 수정 
 }
