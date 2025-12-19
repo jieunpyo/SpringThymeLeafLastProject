@@ -62,6 +62,11 @@ import lombok.RequiredArgsConstructor;
  *    
  *  XML => 변경 (어노테이션) 
  *   | 자바스크립트 : JSON 
+ *   
+ *  1. 전송 / 처리 / 결과값 출력
+ *     ---------------------
+ *     | 요청값	   | 결과값
+ *     --------		 ------ 
  */
 public class RecipeController {
    private final RecipeService rService;
