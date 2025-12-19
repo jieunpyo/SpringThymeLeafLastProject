@@ -10,6 +10,7 @@ import java.util.*;
 import com.sist.web.service.*;
 import com.sist.web.vo.*;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
@@ -55,9 +56,19 @@ public class FoodController {
      *   브라우저 <=> Controller <==> Service <=> Mapper <=> 오라클
      */
     @GetMapping("/food/detail")
-    public String food_detail(@RequestParam("fno") int fno,Model model)
+    public String food_detail(@RequestParam("fno") int fno,Model model,
+    		HttpSession session)
     {
     	FoodVO vo=fService.foodDetailData(fno);
+    	String id=(String)session.getAttribute("id");
+    	if(id==null)
+    	{
+    		model.addAttribute("sessionId", "");
+    	}
+    	else
+    	{
+    		model.addAttribute("sessionId", id);
+    	}
     	model.addAttribute("vo", vo);
     	model.addAttribute("main_html", "food/detail");
     	return "main/main";
