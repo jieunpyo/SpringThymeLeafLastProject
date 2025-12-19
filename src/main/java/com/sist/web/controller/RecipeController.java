@@ -1,8 +1,10 @@
 package com.sist.web.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -99,6 +101,18 @@ public class RecipeController {
    {
 	   // DB 연동 
 	   RecipeDetailVO vo=rService.recipeDetailData(no);
+	   List<String> mList=new ArrayList<String>();
+	   List<String> nList=new ArrayList<String>();
+	   String[] datas=vo.getFoodmake().split("\n");
+	   // 1. 조리 ^image\n / 2..........
+	   for(String s:datas)
+	   {
+		   StringTokenizer st=new StringTokenizer(s,"^");
+		   mList.add(st.nextToken());
+		   nList.add(st.nextToken());
+	   }
+	   model.addAttribute("mList", mList);
+	   model.addAttribute("nList", nList);
 	   model.addAttribute("vo", vo);
 	   // 댓글 
 	   model.addAttribute("main_html", "recipe/detail");
