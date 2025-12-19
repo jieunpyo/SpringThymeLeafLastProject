@@ -87,7 +87,9 @@
              </td>
              <td class="text-right" width=20%>
               <span v-if="sessionId===rvo.id">
-               <a href="#" class="btn btn-xs btn-warning">수정</a>
+               <button type=button href="#" class="btn-xs btn-warning upbtn" :id="'u'+rvo.no"
+                @click="replyUpdateForm(rvo.no)"
+               >수정</button>
                <button type="button" class="btn-xs btn-info"
                 @click="replyDelete(rvo.no)"
                >삭제</button>
@@ -99,6 +101,21 @@
                <pre style="white-space: pre-wrap;background-color: white;border:none">((rvo.msg))</pre>
               </td>
             </tr>
+            <tr>
+            <td colspan="2">
+            <table class="table ups" style="display:none" :id="'up'+rvo.no">
+		       <tr>
+		        <td>
+		         <textarea rows="5" cols="70" style="float: left" :id="'umsg'+rvo.no">((rvo.msg))</textarea>
+		         <button type=button class="btn-primary"
+		          style="width: 100px;height: 99px;float: left"
+		          @click="replyUpdate(rvo.no)"
+		         >댓글수정</button>
+		        </td>
+		       </tr>
+		      </table>
+		     </td>
+		    </tr>
           </table>
          </td>
        </tr>
@@ -128,7 +145,8 @@
     			cno:'[[${vo.fno}]]',
     			sessionId:'[[${sessionId}]]',
     			msg:'',
-    			type:1
+    			type:1,
+    			up:false
     		}
     	},
     	/////// VM => 변수를 변경하는 곳 
@@ -210,6 +228,22 @@
         			this.cno=response.data.cno
         			this.type=response.data.type
         		})
+    		},
+    		replyUpdateForm(no){
+    			$('.ups').hide()
+    			$('.upbtn').text("수정")
+    			if(this.up===false)
+    			{
+    				this.up=true
+    				$('#up'+no).show()
+    				$('#u'+no).text("취소")
+    			}
+    			else
+    			{
+    				this.up=false
+    				$('#up'+no).hide()
+    				$('#u'+no).text("수정")
+    			}
     		}
     		
     	},
